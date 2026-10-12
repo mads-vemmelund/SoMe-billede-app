@@ -7,10 +7,9 @@ Appen lader brugeren vælge et billede fra sin computer, tilpasse det til faste 
 ## Platform og teknologi
 
 - Programmeringssprog: C#.
-- Foreløbig platformantagelse: Windows-desktopapp.
-- Appen skal bygges på en aktuel, understøttet version af .NET.
+- Platform: Windows-desktopapp bygget med WPF på .NET 10 (`net10.0-windows`).
+- SkiaSharp anvendes til lokal billedindlæsning, skalering og eksport.
 - Billedbehandling skal ske lokalt på brugerens computer. Billeder må ikke uploades til en ekstern tjeneste.
-- Valg af UI-teknologi (for eksempel WPF, WinUI eller .NET MAUI) fastlægges under projektets tekniske design.
 
 ## Målgruppe
 
@@ -117,7 +116,5 @@ Alle mål er bredde × højde i pixels.
 
 ## Åbne afklaringer
 
-- Skal appen være en Windows-desktopapp, eller skal den også kunne køre på macOS/Linux?
-- Hvilken UI-teknologi skal anvendes i C#/.NET?
 - Skal brugeren kunne flytte beskæringsområdet manuelt, eller er centreret beskæring tilstrækkelig i første version?
 - Skal standardformatet ved eksport være JPEG eller PNG?
