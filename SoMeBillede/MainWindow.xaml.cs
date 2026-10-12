@@ -52,6 +52,7 @@ public partial class MainWindow : Window
         DataContext = this;
         PreviewFormatBox.ItemsSource = FormatGroups.SelectMany(group => group.Formats).ToList();
         PreviewFormatBox.SelectedIndex = 0;
+        UpdateExportAvailability();
     }
 
     public ObservableCollection<SocialFormatGroup> FormatGroups { get; }
@@ -83,6 +84,7 @@ public partial class MainWindow : Window
             RotateRightButton.IsEnabled = true;
             OpenFolderButton.Visibility = Visibility.Collapsed;
             StatusText.Text = "Billedet er klar til tilpasning.";
+            UpdateExportAvailability();
             await RefreshPreviewAsync();
         }
         catch (Exception exception) when (exception is IOException or InvalidDataException or UnauthorizedAccessException)
@@ -106,6 +108,20 @@ public partial class MainWindow : Window
     private void PreviewFormatBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _ = RefreshPreviewAsync();
+    }
+
+    private void FormatCheckBox_Changed(object sender, RoutedEventArgs e)
+    {
+        UpdateExportAvailability();
+    }
+
+    private void UpdateExportAvailability()
+    {
+        var selectedCount = FormatGroups.SelectMany(group => group.Formats)
+            .Count(format => format.IsSelected);
+        FormatCountText.Text = selectedCount == 1 ? "1 valgt" : $"{selectedCount} valgt";
+        ExportButton.Content = $"Eksportér {selectedCount} billeder";
+        ExportButton.IsEnabled = _sourcePath is not null && selectedCount > 0;
     }
 
     private void Adaptation_Checked(object sender, RoutedEventArgs e)
@@ -225,7 +241,7 @@ public partial class MainWindow : Window
         }
         finally
         {
-            ExportButton.IsEnabled = true;
+            UpdateExportAvailability();
         }
     }
 
