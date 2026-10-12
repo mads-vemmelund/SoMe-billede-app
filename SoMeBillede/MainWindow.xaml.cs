@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -23,6 +22,7 @@ public partial class MainWindow : Window
     private string? _sourcePath;
     private string? _lastDestination;
     private CancellationTokenSource? _previewCancellation;
+    private int _rotationQuarterTurns;
 
     public MainWindow()
     {
@@ -73,11 +73,14 @@ public partial class MainWindow : Window
         {
             var dimensions = await Task.Run(() => ImageProcessor.GetDimensions(dialog.FileName));
             _sourcePath = dialog.FileName;
+            _rotationQuarterTurns = 0;
             SourceNameText.Text = Path.GetFileName(_sourcePath);
             SourceNameText.ToolTip = _sourcePath;
             ImageDimensionsText.Text = $"Originalbillede · {dimensions.Width} × {dimensions.Height} px";
-            EmptyPreview.Visibility = Visibility.Collapsed;
+            EmptyPreviewButton.Visibility = Visibility.Collapsed;
             PreviewImage.Visibility = Visibility.Visible;
+            RotateLeftButton.IsEnabled = true;
+            RotateRightButton.IsEnabled = true;
             OpenFolderButton.Visibility = Visibility.Collapsed;
             StatusText.Text = "Billedet er klar til tilpasning.";
             await RefreshPreviewAsync();
@@ -86,6 +89,18 @@ public partial class MainWindow : Window
         {
             MessageBox.Show(this, exception.Message, "Kunne ikke åbne billedet", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
+    }
+
+    private async void RotateLeftButton_Click(object sender, RoutedEventArgs e)
+    {
+        _rotationQuarterTurns = (_rotationQuarterTurns + 3) % 4;
+        await RefreshPreviewAsync();
+    }
+
+    private async void RotateRightButton_Click(object sender, RoutedEventArgs e)
+    {
+        _rotationQuarterTurns = (_rotationQuarterTurns + 1) % 4;
+        await RefreshPreviewAsync();
     }
 
     private void PreviewFormatBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -116,12 +131,13 @@ public partial class MainWindow : Window
         var sourcePath = _sourcePath;
         var fit = FitRadio.IsChecked == true;
         var background = GetBackground();
+        var rotationQuarterTurns = _rotationQuarterTurns;
         PreviewSizeText.Text = $"{format.Width} × {format.Height} px";
 
         try
         {
             var bytes = await Task.Run(
-                () => ImageProcessor.RenderPreview(sourcePath, format, fit, background),
+            () => ImageProcessor.RenderPreview(sourcePath, format, fit, background, rotationQuarterTurns),
                 cancellation.Token);
             if (cancellation.IsCancellationRequested)
             {
@@ -188,13 +204,14 @@ public partial class MainWindow : Window
         var fit = FitRadio.IsChecked == true;
         var background = GetBackground();
         var prefix = FilePrefixBox.Text;
+        var rotationQuarterTurns = _rotationQuarterTurns;
 
         ExportButton.IsEnabled = false;
         StatusText.Text = $"Eksporterer {selectedFormats.Count} billeder …";
         try
         {
             var savedPaths = await Task.Run(() => ImageProcessor.Export(
-                sourcePath, destination, prefix, selectedFormats, fit, background, outputFormat));
+                sourcePath, destination, prefix, selectedFormats, fit, background, outputFormat, rotationQuarterTurns));
             _lastDestination = destination;
             DestinationText.Text = _lastDestination;
             StatusText.Text = $"Færdig. {savedPaths.Count} billeder gemt.";

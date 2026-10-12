@@ -6,6 +6,45 @@ namespace SoMeBillede.Tests;
 public class ImageProcessorTests
 {
     [Fact]
+    public void RenderPreview_RotatesImageInBothDirections()
+    {
+        var directory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(directory);
+
+        try
+        {
+            var sourcePath = Path.Combine(directory, "orientation.png");
+            using (var source = new SKBitmap(new SKImageInfo(2, 3)))
+            {
+                source.SetPixel(0, 0, SKColors.Red);
+                source.SetPixel(1, 0, SKColors.Green);
+                source.SetPixel(0, 1, SKColors.Blue);
+                source.SetPixel(1, 1, SKColors.Yellow);
+                source.SetPixel(0, 2, SKColors.Magenta);
+                source.SetPixel(1, 2, SKColors.Cyan);
+                using var image = SKImage.FromBitmap(source);
+                using var data = image.Encode(SKEncodedImageFormat.Png, 100);
+                File.WriteAllBytes(sourcePath, data.ToArray());
+            }
+
+            var format = new SocialFormat("Test", "Rotation", 3, 2);
+            var clockwiseBytes = ImageProcessor.RenderPreview(sourcePath, format, false, CanvasBackground.Transparent, 1);
+            var counterclockwiseBytes = ImageProcessor.RenderPreview(sourcePath, format, false, CanvasBackground.Transparent, -1);
+            using var clockwise = SKBitmap.Decode(clockwiseBytes);
+            using var counterclockwise = SKBitmap.Decode(counterclockwiseBytes);
+
+            Assert.Equal(SKColors.Magenta, clockwise.GetPixel(0, 0));
+            Assert.Equal(SKColors.Red, clockwise.GetPixel(2, 0));
+            Assert.Equal(SKColors.Green, counterclockwise.GetPixel(0, 0));
+            Assert.Equal(SKColors.Cyan, counterclockwise.GetPixel(2, 0));
+        }
+        finally
+        {
+            Directory.Delete(directory, true);
+        }
+    }
+
+    [Fact]
     public void Export_WritesAllPresetDimensionsWithoutOverwriting()
     {
         var directory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));

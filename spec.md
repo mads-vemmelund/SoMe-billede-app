@@ -25,6 +25,8 @@ Brugere, der vil genbruge et eksisterende billede på sociale medier uden selv a
 6. Brugeren vælger filformat og destination.
 7. Appen opretter en separat billedfil for hvert valgt format og viser, hvor filerne blev gemt.
 
+Hvis intet billede er valgt, kan brugeren åbne filvælgeren ved at klikke hvor som helst i det centrale uploadområde. Når et billede er indlæst, kan det roteres 90 grader med eller mod uret. Rotation anvendes ens i forhåndsvisningen og alle eksporterede filer.
+
 ## Understøttede billedstørrelser
 
 Alle mål er bredde × højde i pixels.
@@ -65,6 +67,7 @@ Alle mål er bredde × højde i pixels.
   - **Tilpas hele billedet:** Hele billedet bevares inden for outputfladen, og eventuel ubrugt plads udfyldes med en valgt baggrundsfarve. Standard er hvid.
   - **Udfyld formatet:** Billedet skaleres, så outputfladen dækkes; overskydende områder beskæres.
 - Ved beskæring vises en forhåndsvisning, så brugeren kan se, hvilke dele af billedet der udelades. Beskæringen centreres som standard.
+- Brugeren kan rotere billedet i trin på 90 grader med eller mod uret før eksport.
 - Ændring af tilpasningsvalg opdaterer forhåndsvisningen.
 - Billedet skaleres med bevaret billedformat; det må ikke strækkes eller forvrænges.
 
@@ -80,6 +83,7 @@ Alle mål er bredde × højde i pixels.
 ## Brugergrænseflade
 
 - Hovedskærmen skal gøre det tydeligt, hvordan man vælger et billede, vælger outputformater og starter eksport.
+- Hele det tomme centrale uploadområde skal åbne filvælgeren ved klik.
 - Forhåndsvisning og valgte dimensioner skal være synlige, før brugeren eksporterer.
 - Fejlbeskeder skal forklare problemet og, hvor muligt, hvordan brugeren kan løse det.
 - Appen skal fungere ved almindelige vinduesstørrelser og kunne betjenes med tastatur.
@@ -113,6 +117,8 @@ Alle mål er bredde × højde i pixels.
 8. Eksisterende filer overskrives ikke uden brugerens accept.
 9. Ugyldige eller ikke-understøttede filer giver en forståelig fejl uden at lukke appen.
 10. Originalbilledet forbliver uændret, og billedbehandlingen kræver ikke netværksadgang.
+11. Hele uploadområdet åbner filvælgeren, når der ikke er valgt et billede.
+12. Medurs og modurs rotation kan anvendes på forhåndsvisning og eksport uden at strække billedet.
 
 ## Åbne afklaringer
 
