@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="SoMe Billede" Height="900" Width="1460" MinHeight="720" MinWidth="1120"
-        Background="#E9EEEA" Foreground="#202522" FontFamily="Segoe UI">
+        Background="#F1F3F0" Foreground="#202720" FontFamily="Segoe UI">
     <Window.Resources>
         <Style x:Key="PrimaryButton" TargetType="Button">
-            <Setter Property="Background" Value="#244B3A" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="#B9E64B" />
+            <Setter Property="Foreground" Value="#1C2A15" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Padding" Value="18,11" />
             <Setter Property="FontSize" Value="14" />
@@ -17,39 +17,39 @@
             <Setter Property="Cursor" Value="Hand" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#326149" />
+                    <Setter Property="Background" Value="#C9F36A" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="Opacity" Value="0.48" />
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="SecondaryButton" TargetType="Button">
-            <Setter Property="Background" Value="#F5F7F4" />
-            <Setter Property="Foreground" Value="#244B3A" />
-            <Setter Property="BorderBrush" Value="#D5DDD7" />
+            <Setter Property="Background" Value="#F7F8F5" />
+            <Setter Property="Foreground" Value="#334036" />
+            <Setter Property="BorderBrush" Value="#DCE1DA" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Padding" Value="13,9" />
+            <Setter Property="Padding" Value="12,8" />
             <Setter Property="FontSize" Value="13" />
             <Setter Property="Cursor" Value="Hand" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#EAF0EB" />
+                    <Setter Property="Background" Value="#EAF0E5" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="Opacity" Value="0.48" />
                 </Trigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="IconButton" TargetType="Button" BasedOn="{StaticResource SecondaryButton}">
-            <Setter Property="Width" Value="42" />
-            <Setter Property="Height" Value="42" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="Padding" Value="0" />
-            <Setter Property="FontSize" Value="21" />
+            <Setter Property="FontSize" Value="20" />
         </Style>
         <Style x:Key="UploadSurfaceButton" TargetType="Button">
-            <Setter Property="Background" Value="#18251E" />
-            <Setter Property="BorderBrush" Value="#3B5144" />
+            <Setter Property="Background" Value="#FBFCF9" />
+            <Setter Property="BorderBrush" Value="#98A89B" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
@@ -57,16 +57,16 @@
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="UploadSurfaceBorder" Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="UploadSurfaceBorder" Property="Background" Value="#203329" />
-                                <Setter TargetName="UploadSurfaceBorder" Property="BorderBrush" Value="#86A28E" />
+                                <Setter TargetName="UploadSurfaceBorder" Property="Background" Value="#F1F6E8" />
+                                <Setter TargetName="UploadSurfaceBorder" Property="BorderBrush" Value="#718A5A" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="UploadSurfaceBorder" Property="Background" Value="#294635" />
+                                <Setter TargetName="UploadSurfaceBorder" Property="Background" Value="#E7EEDB" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -75,84 +75,191 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Padding" Value="8,6" />
-            <Setter Property="MinHeight" Value="38" />
-            <Setter Property="BorderBrush" Value="#D2DBD4" />
-            <Setter Property="Background" Value="#F8FAF8" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="BorderBrush" Value="#D6DDD4" />
+            <Setter Property="Background" Value="#FBFCF9" />
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Padding" Value="9,7" />
-            <Setter Property="MinHeight" Value="38" />
-            <Setter Property="BorderBrush" Value="#D5DDD7" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="BorderBrush" Value="#D6DDD4" />
         </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="76" />
+            <RowDefinition Height="68" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#FBFCFA" BorderBrush="#D9E0DA" BorderThickness="0,0,0,1">
-            <DockPanel Margin="30,0">
+
+        <Border Grid.Row="0" Background="#FBFCF9" BorderBrush="#DDE2DB" BorderThickness="0,0,0,1">
+            <Grid Margin="26,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Border Width="42" Height="42" Background="#244B3A" CornerRadius="10">
-                        <TextBlock Text="S" Foreground="#DCE9DF" FontSize="23" FontWeight="Bold"
+                    <Border Width="34" Height="34" Background="#202B22" CornerRadius="8">
+                        <TextBlock Text="S" Foreground="#C4EE61" FontSize="20" FontWeight="Bold"
                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
-                    <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
-                        <TextBlock Text="SoMe Billede" FontSize="18" FontWeight="SemiBold" />
-                        <TextBlock Text="DIT BILLEDE. ALLE FORMATER." FontSize="9" Foreground="#78817B" />
-                    </StackPanel>
+                    <TextBlock Text="SoMe Billede" FontSize="17" FontWeight="SemiBold" Margin="11,0,0,0"
+                               VerticalAlignment="Center" />
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
-                    <TextBlock x:Name="SourceNameText" Text="Intet billede valgt" Foreground="#66736A"
-                               VerticalAlignment="Center" Margin="0,0,16,0" MaxWidth="280" TextTrimming="CharacterEllipsis" />
-                    <Button Content="＋   Vælg billede" Style="{StaticResource PrimaryButton}"
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="30,0,0,0">
+                    <Border Background="#EAF0E5" CornerRadius="10" Padding="9,4" Margin="0,0,8,0">
+                        <TextBlock Text="1" FontSize="10" FontWeight="Bold" Foreground="#49632D" />
+                    </Border>
+                    <TextBlock Text="Billede" FontSize="12" Foreground="#70796F" VerticalAlignment="Center" />
+                    <Border Width="22" Height="1" Background="#CDD4CA" Margin="10,0" />
+                    <Border Background="#202B22" CornerRadius="10" Padding="9,4" Margin="0,0,8,0">
+                        <TextBlock Text="2" FontSize="10" FontWeight="Bold" Foreground="#C4EE61" />
+                    </Border>
+                    <TextBlock Text="Formater" FontSize="12" Foreground="#202720" FontWeight="SemiBold"
+                               VerticalAlignment="Center" />
+                    <Border Width="22" Height="1" Background="#CDD4CA" Margin="10,0" />
+                    <Border Background="#EAF0E5" CornerRadius="10" Padding="9,4" Margin="0,0,8,0">
+                        <TextBlock Text="3" FontSize="10" FontWeight="Bold" Foreground="#49632D" />
+                    </Border>
+                    <TextBlock Text="Eksportér" FontSize="12" Foreground="#70796F" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock x:Name="SourceNameText" Text="Intet billede valgt" Foreground="#747D73"
+                               VerticalAlignment="Center" Margin="0,0,14,0" MaxWidth="250"
+                               TextTrimming="CharacterEllipsis" />
+                    <Button Content="＋  Vælg billede" Style="{StaticResource PrimaryButton}"
                             Click="ChooseImageButton_Click" />
                 </StackPanel>
-            </DockPanel>
+            </Grid>
         </Border>
-        <Grid Grid.Row="1" Margin="22">
+
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" MinWidth="600" />
+                <ColumnDefinition Width="350" />
             </Grid.ColumnDefinitions>
-                <Border Grid.Column="0" Background="#FBFCFA" BorderBrush="#D9E0DA" BorderThickness="1"
-                        CornerRadius="9" Padding="18" Margin="0,0,14,0">
-                <DockPanel>
-                        <DockPanel DockPanel.Dock="Top" Margin="0,0,0,14">
-                            <Border Background="#EAF0EB" CornerRadius="12" Padding="9,4"
-                                    VerticalAlignment="Center" HorizontalAlignment="Right">
-                                <TextBlock x:Name="FormatCountText" Text="0 valgt" Foreground="#315A43"
-                                           FontSize="11" FontWeight="SemiBold" />
-                            </Border>
-                            <StackPanel>
-                                <TextBlock Text="Formater" FontSize="19" FontWeight="SemiBold" />
-                                <TextBlock Text="Vælg de størrelser, du skal bruge" Foreground="#78817B"
-                                           FontSize="12" Margin="0,4,0,0" />
+
+            <Grid Grid.Column="0" Margin="26,20,24,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="52" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="38" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="2,0,2,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Redigér billede" FontSize="18" FontWeight="SemiBold" />
+                        <TextBlock x:Name="ImageDimensionsText" Text="Vælg et billede for at begynde"
+                                   Foreground="#747D73" FontSize="11" Margin="0,3,0,0" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button x:Name="RotateLeftButton" Content="↶" Style="{StaticResource IconButton}"
+                                ToolTip="Rotér mod uret" IsEnabled="False" Click="RotateLeftButton_Click"
+                                Margin="0,0,5,0" />
+                        <Button x:Name="RotateRightButton" Content="↷" Style="{StaticResource IconButton}"
+                                ToolTip="Rotér med uret" IsEnabled="False" Click="RotateRightButton_Click"
+                                Margin="0,0,12,0" />
+                        <ComboBox x:Name="PreviewFormatBox" Width="235" DisplayMemberPath="DisplayName"
+                                  SelectionChanged="PreviewFormatBox_SelectionChanged" />
+                    </StackPanel>
+                </Grid>
+
+                <Border Grid.Row="1" Background="#E4E8E2" BorderBrush="#D5DBD3" BorderThickness="1"
+                        CornerRadius="8" Padding="24">
+                    <Grid>
+                        <Image x:Name="PreviewImage" Stretch="Uniform" Visibility="Collapsed" />
+                        <Button x:Name="EmptyPreviewButton" Style="{StaticResource UploadSurfaceButton}"
+                                Click="ChooseImageButton_Click">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24">
+                                <Border Width="60" Height="60" Background="#202B22" CornerRadius="17"
+                                        HorizontalAlignment="Center" Margin="0,0,0,18">
+                                    <TextBlock Text="↑" FontSize="29" Foreground="#C4EE61"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                                <TextBlock Text="Start med at vælge et billede" FontSize="17" FontWeight="SemiBold"
+                                           Foreground="#202720" HorizontalAlignment="Center" />
+                                <TextBlock Text="Klik hvor som helst i feltet for at gennemse dine filer"
+                                           FontSize="12" Foreground="#747D73" HorizontalAlignment="Center"
+                                           Margin="0,7,0,0" />
+                                <Border Background="#EAF0E5" CornerRadius="4" Padding="11,6"
+                                        HorizontalAlignment="Center" Margin="0,18,0,0">
+                                    <TextBlock Text="JPG · PNG · WEBP" FontSize="10" FontWeight="SemiBold"
+                                               Foreground="#49632D" />
+                                </Border>
                             </StackPanel>
-                        </DockPanel>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        </Button>
+                        <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#FBFCF9"
+                                CornerRadius="4" Padding="9,5" Margin="0,0,8,8" IsHitTestVisible="False">
+                            <TextBlock x:Name="PreviewSizeText" Text="" Foreground="#344034" FontSize="10" />
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <DockPanel Grid.Row="2" Margin="2,10,2,0" LastChildFill="False">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="Tilpas" FontSize="11" FontWeight="SemiBold" Margin="0,0,12,0"
+                                   VerticalAlignment="Center" />
+                        <RadioButton x:Name="FitRadio" Content="Hele billedet" IsChecked="True"
+                                     GroupName="FitMode" Checked="Adaptation_Checked" Margin="0,0,16,0"
+                                     FontSize="11" ToolTip="Bevar hele billedet og udfyld eventuel plads med baggrundsfarve." />
+                        <RadioButton x:Name="FillRadio" Content="Beskær til format"
+                                     GroupName="FitMode" Checked="Adaptation_Checked"
+                                     FontSize="11" ToolTip="Fyld formatet og beskær overskydende kanter." />
+                    </StackPanel>
+                    <TextBlock x:Name="StatusText" DockPanel.Dock="Right" Text="Klar"
+                               Foreground="#747D73" FontSize="11" VerticalAlignment="Center" />
+                </DockPanel>
+            </Grid>
+
+            <Border Grid.Column="1" Background="#FBFCF9" BorderBrush="#DDE2DB" BorderThickness="1,0,0,0">
+                <Grid Margin="20,20,20,18">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0" Margin="0,0,0,14">
+                        <Border Background="#EAF0E5" CornerRadius="10" Padding="9,4"
+                                VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <TextBlock x:Name="FormatCountText" Text="0 valgt" Foreground="#49632D"
+                                       FontSize="10" FontWeight="SemiBold" />
+                        </Border>
+                        <StackPanel>
+                            <TextBlock Text="Outputformater" FontSize="16" FontWeight="SemiBold" />
+                            <TextBlock Text="Vælg de størrelser, du har brug for" Foreground="#747D73"
+                                       FontSize="11" Margin="0,3,0,0" />
+                        </StackPanel>
+                    </DockPanel>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
                         <ItemsControl ItemsSource="{Binding FormatGroups}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0,0,0,16">
-                                        <TextBlock Text="{Binding Name}" FontSize="12" FontWeight="Bold"
-                                                   Foreground="#244B3A" Margin="0,0,0,6" />
+                                    <StackPanel Margin="0,0,0,13">
+                                        <TextBlock Text="{Binding Name}" FontSize="9" FontWeight="Bold"
+                                                   Foreground="#687767" Margin="0,0,0,5" />
                                         <ItemsControl ItemsSource="{Binding Formats}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
                                                     <CheckBox IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-                                                              Padding="5,7" Cursor="Hand" Background="Transparent"
+                                                              Padding="4,6" Cursor="Hand" Background="Transparent"
                                                               Checked="FormatCheckBox_Changed"
                                                               Unchecked="FormatCheckBox_Changed">
-                                                        <Grid Width="248">
+                                                        <Grid Width="278">
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="*" />
                                                                 <ColumnDefinition Width="Auto" />
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" />
+                                                            <TextBlock Text="{Binding Name}" FontSize="11"
+                                                                       VerticalAlignment="Center" />
                                                             <TextBlock Grid.Column="1" Text="{Binding Dimensions}"
-                                                                       Foreground="#78817B" FontSize="11"
+                                                                       Foreground="#747D73" FontSize="10"
                                                                        VerticalAlignment="Center" />
                                                         </Grid>
                                                     </CheckBox>
@@ -164,116 +271,51 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
-                    <Border DockPanel.Dock="Bottom" Background="#EEF3EF" CornerRadius="7" Padding="11"
-                            Margin="0,10,0,0">
-                        <TextBlock Text="Billederne behandles lokalt på din computer." FontSize="11"
-                                   Foreground="#59645D" TextWrapping="Wrap" />
-                    </Border>
-                </DockPanel>
-            </Border>
-            <Grid Grid.Column="1" Margin="0,0,14,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <DockPanel Grid.Row="0" Margin="4,0,4,14">
-                    <StackPanel>
-                        <TextBlock Text="Arbejdsområde" FontSize="19" FontWeight="SemiBold" />
-                        <TextBlock x:Name="ImageDimensionsText" Text="Vælg et billede for at begynde"
-                                   Foreground="#78817B" FontSize="12" Margin="0,5,0,0" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button x:Name="RotateLeftButton" Content="↶" Style="{StaticResource IconButton}"
-                                ToolTip="Rotér mod uret" IsEnabled="False" Click="RotateLeftButton_Click"
-                                Margin="0,0,6,0" />
-                        <Button x:Name="RotateRightButton" Content="↷" Style="{StaticResource IconButton}"
-                                ToolTip="Rotér med uret" IsEnabled="False" Click="RotateRightButton_Click"
-                                Margin="0,0,12,0" />
-                        <ComboBox x:Name="PreviewFormatBox" Width="245" HorizontalAlignment="Right"
-                                  VerticalAlignment="Center" DisplayMemberPath="DisplayName"
-                                  SelectionChanged="PreviewFormatBox_SelectionChanged" />
-                    </StackPanel>
-                </DockPanel>
-                <Border Grid.Row="1" Background="#E4EAE5" BorderBrush="#D2DAD4" BorderThickness="1"
-                    CornerRadius="9" Padding="18">
-                    <Grid>
-                        <Image x:Name="PreviewImage" Stretch="Uniform" Visibility="Collapsed" />
-                        <Button x:Name="EmptyPreviewButton" Style="{StaticResource UploadSurfaceButton}"
-                                Click="ChooseImageButton_Click">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="24">
-                                <Border Width="68" Height="68" Background="#2B4636" CornerRadius="20"
-                                        HorizontalAlignment="Center" Margin="0,0,0,20">
-                                    <TextBlock Text="＋" FontSize="34" Foreground="#DCE9DF"
-                                               HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                </Border>
-                                <TextBlock Text="Start med at vælge et billede" FontSize="18" FontWeight="SemiBold"
-                                           Foreground="#F4F7F4" HorizontalAlignment="Center" />
-                                <TextBlock Text="Klik hvor som helst her for at gennemse dine filer"
-                                           FontSize="13" Foreground="#A8B8AD" HorizontalAlignment="Center"
-                                           Margin="0,8,0,0" />
-                                <Border Background="#314B3B" CornerRadius="5" Padding="12,7"
-                                        HorizontalAlignment="Center" Margin="0,22,0,0">
-                                    <TextBlock Text="Vælg et billede" FontSize="12" FontWeight="SemiBold"
-                                               Foreground="White" />
-                                </Border>
+
+                    <StackPanel Grid.Row="2" Margin="0,10,0,0">
+                        <Border Height="1" Background="#E1E5DF" Margin="0,0,0,12" />
+                        <TextBlock Text="EKSPORTINDSTILLINGER" FontSize="9" FontWeight="Bold"
+                                   Foreground="#687767" Margin="0,0,0,8" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <TextBlock Text="Filtype" FontSize="10" Foreground="#747D73" Margin="0,0,0,4" />
+                                <ComboBox x:Name="OutputFormatBox" SelectedIndex="0">
+                                    <ComboBoxItem Content="JPEG" Tag="Jpeg" />
+                                    <ComboBoxItem Content="PNG" Tag="Png" />
+                                </ComboBox>
                             </StackPanel>
-                        </Button>
-                        <Border VerticalAlignment="Bottom" HorizontalAlignment="Right" Background="#FBFCFA"
-                                CornerRadius="5" Padding="10,6" Margin="0,0,8,8" IsHitTestVisible="False">
-                            <TextBlock x:Name="PreviewSizeText" Text="" Foreground="#34483A" FontSize="11" />
-                        </Border>
-                    </Grid>
-                </Border>
-                <StackPanel Grid.Row="2" Margin="4,16,4,0">
-                    <TextBlock Text="Tilpasning" FontWeight="SemiBold" FontSize="13" />
-                    <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                        <RadioButton x:Name="FitRadio" Content="Bevar hele billedet" IsChecked="True"
-                                     GroupName="FitMode" Checked="Adaptation_Checked" Margin="0,0,24,0"
-                                     ToolTip="Hele billedet bevares; ekstra plads udfyldes med baggrundsfarven." />
-                        <RadioButton x:Name="FillRadio" Content="Udfyld med beskæring"
-                                     GroupName="FitMode" Checked="Adaptation_Checked"
-                                     ToolTip="Fyld hele formatet; kanterne beskæres centreret." />
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
-                <Border Grid.Column="2" Background="#FBFCFA" BorderBrush="#D9E0DA" BorderThickness="1"
-                    CornerRadius="10" Padding="20">
-                <DockPanel>
-                    <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="Eksport" FontSize="19" FontWeight="SemiBold" />
-                        <TextBlock Text="Filerne gemmes lokalt på din computer" Foreground="#78817B"
-                                   FontSize="12" Margin="0,5,0,20" TextWrapping="Wrap" />
-                        <TextBlock Text="FILTYPE" FontSize="10" FontWeight="Bold" Foreground="#78817B" />
-                        <ComboBox x:Name="OutputFormatBox" SelectedIndex="0" Margin="0,6,0,16">
-                            <ComboBoxItem Content="JPEG" Tag="Jpeg" />
-                            <ComboBoxItem Content="PNG" Tag="Png" />
-                        </ComboBox>
-                        <TextBlock Text="TOM BAGGRUND" FontSize="10" FontWeight="Bold" Foreground="#78817B" />
-                        <ComboBox x:Name="BackgroundBox" SelectedIndex="0" Margin="0,6,0,16"
-                                  SelectionChanged="BackgroundBox_SelectionChanged">
-                            <ComboBoxItem Content="Hvid" Tag="White" />
-                            <ComboBoxItem Content="Sort" Tag="Black" />
-                            <ComboBoxItem Content="Gennemsigtig" Tag="Transparent" />
-                        </ComboBox>
-                        <TextBlock Text="FILNAVNSPRÆFIKS" FontSize="10" FontWeight="Bold" Foreground="#78817B" />
-                        <TextBox x:Name="FilePrefixBox" Margin="0,6,0,16" ToolTip="Tilføjes foran platformens navn" />
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Baggrund" FontSize="10" Foreground="#747D73" Margin="0,0,0,4" />
+                                <ComboBox x:Name="BackgroundBox" SelectedIndex="0"
+                                          SelectionChanged="BackgroundBox_SelectionChanged">
+                                    <ComboBoxItem Content="Hvid" Tag="White" />
+                                    <ComboBoxItem Content="Sort" Tag="Black" />
+                                    <ComboBoxItem Content="Gennemsigtig" Tag="Transparent" />
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <TextBlock Text="Filnavnspræfiks" FontSize="10" Foreground="#747D73"
+                                   Margin="0,10,0,4" />
+                        <TextBox x:Name="FilePrefixBox" ToolTip="Tilføjes foran platformens navn" />
                         <Button Content="Vælg destinationsmappe" Style="{StaticResource SecondaryButton}"
-                                HorizontalAlignment="Stretch" Click="ChooseFolderButton_Click" />
+                                HorizontalAlignment="Stretch" Margin="0,9,0,0"
+                                Click="ChooseFolderButton_Click" />
                         <TextBlock x:Name="DestinationText" Text="Vælg en mappe ved eksport"
-                                   Foreground="#78817B" FontSize="11" Margin="0,7,0,0"
-                                   TextWrapping="Wrap" />
-                    </StackPanel>
-                    <StackPanel DockPanel.Dock="Bottom" Margin="0,18,0,0">
-                        <Button x:Name="ExportButton" Content="Eksportér 0 billeder" Style="{StaticResource PrimaryButton}"
-                            HorizontalAlignment="Stretch" IsEnabled="False" Click="ExportButton_Click" />
+                                   Foreground="#747D73" FontSize="10" Margin="0,5,0,0"
+                                   TextWrapping="Wrap" MaxHeight="32" />
+                        <Button x:Name="ExportButton" Content="Eksportér 0 billeder"
+                                Style="{StaticResource PrimaryButton}" HorizontalAlignment="Stretch"
+                                IsEnabled="False" Margin="0,12,0,0" Click="ExportButton_Click" />
                         <Button x:Name="OpenFolderButton" Content="Åbn destinationsmappe"
                                 Style="{StaticResource SecondaryButton}" HorizontalAlignment="Stretch"
-                                Margin="0,8,0,0" Visibility="Collapsed" Click="OpenFolderButton_Click" />
-                        <TextBlock x:Name="StatusText" Text="Klar" Foreground="#78817B" FontSize="11"
-                                   Margin="0,12,0,0" TextWrapping="Wrap" />
+                                Margin="0,6,0,0" Visibility="Collapsed" Click="OpenFolderButton_Click" />
                     </StackPanel>
-                </DockPanel>
+                </Grid>
             </Border>
         </Grid>
     </Grid>
